@@ -6,7 +6,7 @@ in a lakehouse, parsed into queryable columns, scored against data-quality rules
 in Power BI — the capability MX runs today as **Prism**.
 
 This is a **worked example, not a finished product**. It is sized so that an MX engineer can
-read every notebook in an afternoon and then extend it without asking anyone's permission.
+read every notebook in an afternoon, gain a better understanding of basic Spark processing in Fabric, and work through extending the solution to work with actual MX data.
 
 ---
 
