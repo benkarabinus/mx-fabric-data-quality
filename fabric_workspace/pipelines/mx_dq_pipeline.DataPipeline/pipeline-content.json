@@ -1,0 +1,115 @@
+{
+  "properties": {
+    "description": "Routine snapshot processing: ingest raw files, parse HL7 and CCDA, then score rules using existing mappings. Run mx_setup_pipeline first in a new workspace. Does not create schemas or reseed mappings. Do not run concurrently with setup.",
+    "activities": [
+      {
+        "name": "ingest_raw_files",
+        "type": "TridentNotebook",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "1a2b3c4d-1002-4000-8000-000000001002",
+          "workspaceId": "1a2b3c4d-0000-4000-8000-000000000000"
+        }
+      },
+      {
+        "name": "silver_parse_hl7",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "ingest_raw_files",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "1a2b3c4d-1005-4000-8000-000000001005",
+          "workspaceId": "1a2b3c4d-0000-4000-8000-000000000000"
+        }
+      },
+      {
+        "name": "silver_parse_ccda",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "silver_parse_hl7",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "1a2b3c4d-1006-4000-8000-000000001006",
+          "workspaceId": "1a2b3c4d-0000-4000-8000-000000000000"
+        }
+      },
+      {
+        "name": "gold_score_rules",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "silver_parse_ccda",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "1a2b3c4d-1008-4000-8000-000000001008",
+          "workspaceId": "1a2b3c4d-0000-4000-8000-000000000000"
+        }
+      },
+      {
+        "name": "refresh_semantic_model",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "gold_score_rules",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "1a2b3c4d-1009-4000-8000-000000001009",
+          "workspaceId": "1a2b3c4d-0000-4000-8000-000000000000"
+        }
+      }
+    ]
+  }
+}

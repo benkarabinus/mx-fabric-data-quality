@@ -1,0 +1,14 @@
+map_id,section_name,field_path,data_element,xpath,value_attr,active
+CCDA-001,Patient Role,patientrole_id_extension,PatientRole ID extension,.//hl7:recordTarget/hl7:patientRole/hl7:id,extension,true
+CCDA-002,Patient Role,patient_last_name,Patient Last Name,.//hl7:recordTarget/hl7:patientRole/hl7:patient/hl7:name/hl7:family,,true
+CCDA-003,Patient Role,patient_first_name,Patient First Name,.//hl7:recordTarget/hl7:patientRole/hl7:patient/hl7:name/hl7:given,,true
+CCDA-004,Patient Role,patient_dob,Patient DOB,.//hl7:recordTarget/hl7:patientRole/hl7:patient/hl7:birthTime,value,true
+CCDA-005,Patient Role,patient_gender,Patient Gender,.//hl7:recordTarget/hl7:patientRole/hl7:patient/hl7:administrativeGenderCode,code,true
+CCDA-006,Patient Role,patient_address_streetline,Patient Address StreetLine,.//hl7:recordTarget/hl7:patientRole/hl7:addr/hl7:streetAddressLine,,true
+CCDA-007,Patient Role,patient_address_city,Patient Address City,.//hl7:recordTarget/hl7:patientRole/hl7:addr/hl7:city,,true
+CCDA-008,Patient Role,patient_address_state,Patient Address State,.//hl7:recordTarget/hl7:patientRole/hl7:addr/hl7:state,,true
+CCDA-009,Patient Role,patient_address_zipcode,Patient Address ZipCode,.//hl7:recordTarget/hl7:patientRole/hl7:addr/hl7:postalCode,,true
+CCDA-010,Patient Role,patient_phone_number,Patient Phone Number,.//hl7:recordTarget/hl7:patientRole/hl7:telecom,value,true
+CCDA-011,Patient Role,patient_race,Patient Race,.//hl7:recordTarget/hl7:patientRole/hl7:patient/hl7:raceCode,code,true
+CCDA-012,Patient Role,patient_ethnicity,Patient Ethnicity,.//hl7:recordTarget/hl7:patientRole/hl7:patient/hl7:ethnicGroupCode,code,true
+CCDA-013,Patient Role,patient_language_code,Patient Language Code,.//hl7:recordTarget/hl7:patientRole/hl7:patient/hl7:languageCommunication/hl7:languageCode,code,true

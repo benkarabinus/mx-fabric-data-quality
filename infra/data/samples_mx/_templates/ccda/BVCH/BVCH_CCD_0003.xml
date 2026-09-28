@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <realmCode code="US"/>
+  <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.2" extension="2015-08-01"/>
+  <id root="2.16.840.1.113883.19.5.99999.1" extension="CCD-BVCH-0003"/>
+  <code code="34133-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+        displayName="Summarization of Episode Note"/>
+  <title>Summarization of Episode Note</title>
+  <effectiveTime value="20260111154500"/>
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+  <languageCode code="en-US"/>
+  <recordTarget>
+    <patientRole>
+      <id root="2.16.840.1.113883.19.5.9999.102" extension="MRN7740555"/>
+      <addr use="HP">
+        <streetAddressLine>540 Estuary Ave</streetAddressLine>
+        <city>Bay Valley</city>
+        <state>CA</state>
+        <postalCode>94510</postalCode>
+        <country>US</country>
+      </addr>
+      <telecom use="HP" value="tel:+1-510-555-0477"/>
+      <patient>
+        <name use="L">
+          <given>Rosario</given>
+          <family>Delacruz</family>
+        </name>
+        <administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1"/>
+        <birthTime value="19520918"/>
+        <raceCode code="2106-3" displayName="White" codeSystem="2.16.840.1.113883.6.238" codeSystemName="CDC Race and Ethnicity"/>
+        <ethnicGroupCode code="2135-2" displayName="Hispanic or Latino" codeSystem="2.16.840.1.113883.6.238" codeSystemName="CDC Race and Ethnicity"/>
+      </patient>
+      <providerOrganization>
+        <id root="2.16.840.1.113883.19.5.9999.102"/>
+        <name>Bay Valley Community Hospital</name>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <time value="20260111154500"/>
+    <assignedAuthor>
+      <id root="2.16.840.1.113883.4.6" extension="1891647225"/>
+      <assignedPerson>
+        <name><given>Asha</given><family>Mwangi</family></name>
+      </assignedPerson>
+      <representedOrganization><name>Bay Valley Community Hospital</name></representedOrganization>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id root="2.16.840.1.113883.19.5.9999.102"/>
+        <name>Bay Valley Community Hospital</name>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <component>
+    <structuredBody>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.5.1" extension="2015-08-01"/>
+        <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" displayName="Problem list"/>
+        <title>Problems</title>
+        <text>Problems recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="73211009-20260105"/>
+            <code code="73211009" codeSystem="2.16.840.1.113883.6.96" displayName="Diabetes mellitus"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="CD" code="73211009" codeSystem="2.16.840.1.113883.6.96" displayName="Diabetes mellitus"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.1.1" extension="2015-08-01"/>
+        <code code="10160-0" codeSystem="2.16.840.1.113883.6.1" displayName="History of medication use"/>
+        <title>Medications</title>
+        <text>Medications recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="860975-20260105"/>
+            <code code="860975" codeSystem="2.16.840.1.113883.6.88" displayName="Metformin 500 MG Oral Tablet"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="CD" code="860975" codeSystem="2.16.840.1.113883.6.88" displayName="Metformin 500 MG Oral Tablet"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.6.1" extension="2015-08-01"/>
+        <code code="48765-2" codeSystem="2.16.840.1.113883.6.1" displayName="Allergies"/>
+        <title>Allergies</title>
+        <text>Allergies recorded.</text>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.3.1" extension="2015-08-01"/>
+        <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" displayName="Relevant diagnostic tests"/>
+        <title>Results</title>
+        <text>Results recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="718-7-20260105"/>
+            <code code="718-7" codeSystem="2.16.840.1.113883.6.1" displayName="Hemoglobin"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="PQ" value="11.2" unit="g/dL"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.4.1" extension="2015-08-01"/>
+        <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" displayName="Vital signs"/>
+        <title>Vital Signs</title>
+        <text>Vital Signs recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="8480-6-20260105"/>
+            <code code="8480-6" codeSystem="2.16.840.1.113883.6.1" displayName="Systolic blood pressure"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="PQ" value="146" unit="mm[Hg]"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.22.1" extension="2015-08-01"/>
+        <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" displayName="Encounters"/>
+        <title>Encounters</title>
+        <text>Encounters recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="32485007-20260105"/>
+            <code code="32485007" codeSystem="2.16.840.1.113883.6.96" displayName="Hospital admission"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="CD" code="32485007" codeSystem="2.16.840.1.113883.6.96" displayName="Hospital admission"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.7.1" extension="2015-08-01"/>
+        <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" displayName="History of procedures"/>
+        <title>Procedures</title>
+        <text>Procedures recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="225358003-20260105"/>
+            <code code="225358003" codeSystem="2.16.840.1.113883.6.96" displayName="Wound care"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="CD" code="225358003" codeSystem="2.16.840.1.113883.6.96" displayName="Wound care"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+  </structuredBody>
+  </component>
+</ClinicalDocument>

@@ -1,0 +1,11 @@
+relationship 'Rule result to participant'
+	fromColumn: fact_rule_result.participant_id
+	toColumn: dim_participant.participant_id
+
+relationship 'Rule result to period'
+	fromColumn: fact_rule_result.period_key
+	toColumn: dim_period.period_key
+
+relationship 'Rule result to rule'
+	fromColumn: fact_rule_result.rule_id
+	toColumn: dim_rule.rule_id

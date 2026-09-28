@@ -1,0 +1,29 @@
+# azd environments hold subscription IDs and resource names
+.azure/
+
+# Power BI Desktop local cache and settings, created beside the report
+.pbi/
+*.pbix
+*.pbit
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Office lock files
+~$*
+
+# Logs and scratch
+*.log
+tmp/

@@ -1,0 +1,92 @@
+{
+  "properties": {
+    "description": "Initialization or explicit reseed only. Creates schemas/tables and OVERWRITES all four mapping tables from configuration CSVs. Review table-only edits before rerunning. Do not run concurrently with processing.",
+    "activities": [
+      {
+        "name": "schema_model_bronze",
+        "type": "TridentNotebook",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "1a2b3c4d-1001-4000-8000-000000001001",
+          "workspaceId": "1a2b3c4d-0000-4000-8000-000000000000"
+        }
+      },
+      {
+        "name": "schema_model_silver",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "schema_model_bronze",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "1a2b3c4d-1003-4000-8000-000000001003",
+          "workspaceId": "1a2b3c4d-0000-4000-8000-000000000000"
+        }
+      },
+      {
+        "name": "seed_mapping_tables",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "schema_model_silver",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "1a2b3c4d-1004-4000-8000-000000001004",
+          "workspaceId": "1a2b3c4d-0000-4000-8000-000000000000"
+        }
+      },
+      {
+        "name": "schema_model_gold",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "seed_mapping_tables",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "1a2b3c4d-1007-4000-8000-000000001007",
+          "workspaceId": "1a2b3c4d-0000-4000-8000-000000000000"
+        }
+      }
+    ]
+  }
+}

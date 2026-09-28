@@ -1,0 +1,32 @@
+/// One row per participating organization. Participants come from
+/// mapping.participant, so onboarding a new one is a row edit, not a model change.
+table dim_participant
+	lineageTag: d817accf-4fd2-4357-90fa-343acd3f7a8a
+
+	/// Key, e.g. ARRMC
+	column participant_id
+		dataType: string
+		lineageTag: 220ae824-2376-4fc7-8a02-d2f4d3ef289c
+		summarizeBy: none
+		sourceColumn: participant_id
+
+	/// Display name used on the report
+	column account_name
+		dataType: string
+		lineageTag: 2aa30e22-a33e-4ba4-a9a0-373456b44bd2
+		summarizeBy: none
+		sourceColumn: account_name
+
+	/// Prefix the organization names its files with
+	column file_prefix
+		dataType: string
+		lineageTag: d878cd3b-c9cf-4f5d-b4a7-4d3d7f5c2890
+		summarizeBy: none
+		sourceColumn: file_prefix
+
+	partition dim_participant = entity
+		mode: directLake
+		source
+			entityName: dim_participant
+			schemaName: dq
+			expressionSource: DirectLake_mx_gold

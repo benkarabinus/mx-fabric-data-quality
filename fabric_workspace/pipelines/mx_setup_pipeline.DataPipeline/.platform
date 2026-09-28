@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "mx_setup_pipeline",
+    "description": "Initialization or explicit reseed only. Creates schemas/tables and OVERWRITES all four mapping tables from configuration CSVs. Review table-only edits before rerunning. Do not run concurrently with processing."
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5bb42452-665e-4dd8-9f41-b8e230d89ec2"
+  }
+}

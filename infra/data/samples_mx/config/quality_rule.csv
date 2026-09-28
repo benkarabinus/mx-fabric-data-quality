@@ -1,0 +1,34 @@
+rule_id,report_name,message_type,measure_group,data_element,field_path,rule_type,companion_field_paths,condition_field_path,threshold,exception_allowed,active,notes
+P4P-ADT-001,P4P Participant Report,ADT,Information,ID,PID-3.1,THRESHOLD,,,1,false,true,
+P4P-ADT-002,P4P Participant Report,ADT,Information,Name,PID-5.1,THRESHOLD,,,1,false,true,
+P4P-ADT-003,P4P Participant Report,ADT,Information,DOB,PID-7.1,THRESHOLD,,,1,false,true,
+P4P-ADT-004,P4P Participant Report,ADT,Information,Sex,PID-8,THRESHOLD,,,1,false,true,
+P4P-ADT-005,P4P Participant Report,ADT,Information,Address,PID-11,THRESHOLD,,,0.9,false,true,
+P4P-ADT-010,P4P Participant Report,ADT,Information,Race,PID-10,BIDIRECTIONAL,PID-22.1,,0.95,false,true,Race or Ethnicity satisfies the measure
+P4P-ADT-011,P4P Participant Report,ADT,Information,Home Phone,PID-13,THRESHOLD,,,0.5,false,true,
+P4P-ADT-013,P4P Participant Report,ADT,Information,Language,PID-15.1,THRESHOLD,,,0.25,false,true,
+P4P-ADT-015,P4P Participant Report,ADT,Information,SSN,PID-19.1,THRESHOLD,,,0.25,false,true,
+P4P-ADT-016,P4P Participant Report,ADT,Information,Ethnicity,PID-22.1,BIDIRECTIONAL,PID-10,,0.9,false,true,Ethnicity or Race satisfies the measure
+P4P-ADT-020,P4P Participant Report,ADT,Additional Information,Primary Facility,PD1-3.1,THRESHOLD,,,0.5,true,true,Exception granted; shortfall reports as Warning
+P4P-ADT-021,P4P Participant Report,ADT,Additional Information,PCP,PD1-4,THRESHOLD,,,0.5,true,true,Exception granted; shortfall reports as Warning
+P4P-ADT-032,P4P Participant Report,ADT,Admission,Hospital Service,PV1-10,BIDIRECTIONAL,PV1-18,,0.9,false,true,Full catalog also lists PV1-50; not mapped in this sample
+P4P-ADT-033,P4P Participant Report,ADT,Admission,Patient Type,PV1-18,CONDITIONAL,,PV1-2,0.9,false,true,Scored only on messages that carry a Patient Class
+P4P-ADT-043,P4P Participant Report,ADT,Admission,Admit Reason,PV2-3,BIDIRECTIONAL,DG1-3.1,,0.95,false,true,Admit Reason or Diagnosis Code satisfies the measure
+P4P-ORU-001,P4P Participant Report,ORU,Information,ID,PID-3.1,THRESHOLD,,,1,false,true,
+P4P-ORU-008,P4P Participant Report,ORU,Orders,Order Placer Code,OBR-3.1,THRESHOLD,,,1,false,true,
+P4P-ORU-017,P4P Participant Report,ORU,Lab Results,Result LOINC Code,OBX-3.1,THRESHOLD,,,0.8,false,true,
+P4P-ORU-020,P4P Participant Report,ORU,Lab Results,Units,OBX-6,THRESHOLD,,,0.5,false,true,
+P4P-MDM-007,P4P Participant Report,MDM,Document,Document Type,TXA-2.1,THRESHOLD,,,0.99,false,true,
+P4P-MDM-014,P4P Participant Report,MDM,Document,Unique Document ID,TXA-12.1,THRESHOLD,,,1,false,true,
+P4P-VXU-018,P4P Participant Report,VXU,Medication Administration,Date/Time Start of Administration,RXA-3,THRESHOLD,,,0.95,false,true,
+P4P-VXU-019,P4P Participant Report,VXU,Medication Administration,Administration Code/Identifier,RXA-5.1,THRESHOLD,,,0.95,false,true,
+P4P-RDE-016,P4P Participant Report,RDE,Medication Information,NDC or RxNorm Code,RXE-2.1,THRESHOLD,,,0.95,false,true,
+P4P-RDE-018,P4P Participant Report,RDE,Medication Information,Give Amount,RXE-3,BIDIRECTIONAL,RXE-21.2,,0.8,false,true,Give Amount or Sig satisfies the measure
+USCDI-005,USCDI CCDA Compliance Report,CCDA,Patient Role,Patient Address City,patient_address_city,THRESHOLD,,,0.8,false,true,
+USCDI-006,USCDI CCDA Compliance Report,CCDA,Patient Role,Patient Address State,patient_address_state,THRESHOLD,,,0.8,false,true,
+USCDI-007,USCDI CCDA Compliance Report,CCDA,Patient Role,Patient Address ZipCode,patient_address_zipcode,THRESHOLD,,,0.8,false,true,
+USCDI-008,USCDI CCDA Compliance Report,CCDA,Patient Role,Patient Phone Number,patient_phone_number,THRESHOLD,,,0.8,false,true,
+USCDI-009,USCDI CCDA Compliance Report,CCDA,Patient Role,Patient First Name,patient_first_name,THRESHOLD,,,0.8,false,true,
+USCDI-010,USCDI CCDA Compliance Report,CCDA,Patient Role,Patient Last Name,patient_last_name,THRESHOLD,,,0.8,false,true,
+USCDI-011,USCDI CCDA Compliance Report,CCDA,Patient Role,Patient Gender,patient_gender,THRESHOLD,,,0.8,false,true,
+USCDI-012,USCDI CCDA Compliance Report,CCDA,Patient Role,Patient DOB,patient_dob,THRESHOLD,,,0.8,false,true,

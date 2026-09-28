@@ -1,0 +1,50 @@
+map_id,message_type,segment,field_path,data_element,active
+MAP-ADT-001,ADT,PID,PID-3.1,Patient ID,true
+MAP-ADT-002,ADT,PID,PID-5.1,Patient Last Name,true
+MAP-ADT-003,ADT,PID,PID-5.2,Patient First Name,true
+MAP-ADT-004,ADT,PID,PID-7.1,Date of Birth,true
+MAP-ADT-005,ADT,PID,PID-8,Administrative Sex,true
+MAP-ADT-006,ADT,PID,PID-10,Race,true
+MAP-ADT-007,ADT,PID,PID-11,Patient Address,true
+MAP-ADT-008,ADT,PID,PID-13,Home Phone,true
+MAP-ADT-009,ADT,PID,PID-15.1,Primary Language,true
+MAP-ADT-010,ADT,PID,PID-19.1,SSN,true
+MAP-ADT-011,ADT,PID,PID-22.1,Ethnicity,true
+MAP-ADT-012,ADT,PD1,PD1-3.1,Primary Facility,true
+MAP-ADT-013,ADT,PD1,PD1-4,PCP,true
+MAP-ADT-014,ADT,PV1,PV1-2,Patient Class,true
+MAP-ADT-015,ADT,PV1,PV1-10,Hospital Service,true
+MAP-ADT-016,ADT,PV1,PV1-18,Patient Type,true
+MAP-ADT-017,ADT,PV1,PV1-19,Visit Number,true
+MAP-ADT-018,ADT,PV2,PV2-3,Admit Reason,true
+MAP-ADT-019,ADT,DG1,DG1-3.1,Diagnosis Code,true
+MAP-ORU-001,ORU,PID,PID-3.1,Patient ID,true
+MAP-ORU-002,ORU,PID,PID-5.1,Patient Last Name,true
+MAP-ORU-003,ORU,PID,PID-7.1,Date of Birth,true
+MAP-ORU-004,ORU,PID,PID-8,Administrative Sex,true
+MAP-ORU-005,ORU,PV1,PV1-2,Patient Class,true
+MAP-ORU-006,ORU,OBR,OBR-3.1,Order Placer Code,true
+MAP-ORU-007,ORU,OBR,OBR-4.1,Universal Service Code,true
+MAP-ORU-008,ORU,OBX,OBX-3.1,Result LOINC Code,true
+MAP-ORU-009,ORU,OBX,OBX-5,Result Value,true
+MAP-ORU-010,ORU,OBX,OBX-6,Units,true
+MAP-MDM-001,MDM,PID,PID-3.1,Patient ID,true
+MAP-MDM-002,MDM,PID,PID-5.1,Patient Last Name,true
+MAP-MDM-003,MDM,PID,PID-7.1,Date of Birth,true
+MAP-MDM-004,MDM,PID,PID-8,Administrative Sex,true
+MAP-MDM-005,MDM,TXA,TXA-2.1,Document Type,true
+MAP-MDM-006,MDM,TXA,TXA-12.1,Unique Document ID,true
+MAP-VXU-001,VXU,PID,PID-3.1,Patient ID,true
+MAP-VXU-002,VXU,PID,PID-5.1,Patient Last Name,true
+MAP-VXU-003,VXU,PID,PID-7.1,Date of Birth,true
+MAP-VXU-004,VXU,PID,PID-8,Administrative Sex,true
+MAP-VXU-005,VXU,RXA,RXA-3,Date/Time Start of Administration,true
+MAP-VXU-006,VXU,RXA,RXA-5.1,Administration Code/Identifier,true
+MAP-RDE-001,RDE,PID,PID-3.1,Patient ID,true
+MAP-RDE-002,RDE,PID,PID-5.1,Patient Last Name,true
+MAP-RDE-003,RDE,PID,PID-7.1,Date of Birth,true
+MAP-RDE-004,RDE,PID,PID-8,Administrative Sex,true
+MAP-RDE-005,RDE,RXE,RXE-2.1,NDC or RxNorm Code,true
+MAP-RDE-006,RDE,RXE,RXE-3,Give Amount,true
+MAP-RDE-007,RDE,RXE,RXE-5,Give Units,true
+MAP-RDE-008,RDE,RXE,RXE-21.2,Sig,true

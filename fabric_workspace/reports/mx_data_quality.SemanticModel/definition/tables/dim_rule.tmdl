@@ -1,0 +1,78 @@
+/// One row per quality rule, loaded from mapping.quality_rule. Everything that
+/// describes a measure - which field it looks at, what rate is required, whether
+/// MX has granted an exception - lives here as data. Adding a measure or moving a
+/// threshold is a row edit in the CSV, not a change to this model.
+table dim_rule
+	lineageTag: 7129a8e1-6b20-4494-aae5-116b7bae4508
+
+	/// Key, e.g. P4P-ADT-005
+	column rule_id
+		dataType: string
+		lineageTag: 33a29c0c-adf9-4599-9fc7-bb0503601f71
+		summarizeBy: none
+		sourceColumn: rule_id
+
+	/// Which MX report this measure belongs to
+	column report_name
+		dataType: string
+		lineageTag: c58e89ff-0173-4fc7-a530-342f4c94a8ae
+		summarizeBy: none
+		sourceColumn: report_name
+
+	/// ADT, ORU, MDM, VXU, RDE or CCDA
+	column message_type
+		dataType: string
+		lineageTag: 67854404-d7b2-4d2d-a102-3b9417be0fdd
+		summarizeBy: none
+		sourceColumn: message_type
+
+	/// Section heading on the report
+	column measure_group
+		dataType: string
+		lineageTag: 7a05abef-610b-4b07-a207-08bddd0ff998
+		summarizeBy: none
+		sourceColumn: measure_group
+
+	/// Business name of the measure
+	column data_element
+		dataType: string
+		lineageTag: cd49e33a-5938-4d03-bab2-e6a6fe92298e
+		summarizeBy: none
+		sourceColumn: data_element
+
+	/// Which field is measured, e.g. PID-11
+	column field_path
+		dataType: string
+		lineageTag: 1e555ee8-fb37-4acb-8d05-34385ac5c452
+		summarizeBy: none
+		sourceColumn: field_path
+
+	/// THRESHOLD, BIDIRECTIONAL or CONDITIONAL
+	column rule_type
+		dataType: string
+		lineageTag: 9c146344-6ac2-4e41-898a-8bc81b996611
+		summarizeBy: none
+		sourceColumn: rule_type
+
+	/// Required rate as a fraction: 1.0, 0.9, 0.25
+	column threshold
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 0e27f60f-ec9e-4ada-a73e-15407827b951
+		summarizeBy: none
+		sourceColumn: threshold
+
+	/// TRUE where MX has granted an exception - a shortfall reports as Warning, not Fail
+	column exception_allowed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 283618c7-dd79-47dd-a278-5aca4a15e246
+		summarizeBy: none
+		sourceColumn: exception_allowed
+
+	partition dim_rule = entity
+		mode: directLake
+		source
+			entityName: dim_rule
+			schemaName: dq
+			expressionSource: DirectLake_mx_gold

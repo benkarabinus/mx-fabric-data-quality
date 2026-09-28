@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <realmCode code="US"/>
+  <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.2" extension="2015-08-01"/>
+  <id root="2.16.840.1.113883.19.5.99999.1" extension="CCD-ARRMC-0002"/>
+  <code code="34133-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+        displayName="Summarization of Episode Note"/>
+  <title>Summarization of Episode Note</title>
+  <effectiveTime value="20260112103000"/>
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+  <languageCode code="en-US"/>
+  <recordTarget>
+    <patientRole>
+      <id root="2.16.840.1.113883.19.5.9999.101" extension="MRN0010446"/>
+      <addr use="HP">
+        <streetAddressLine>88 Laurel Ct</streetAddressLine>
+        <city>Redlands</city>
+        <state>CA</state>
+        <postalCode>92373</postalCode>
+        <country>US</country>
+      </addr>
+      <telecom use="HP" value="tel:+1-909-555-0221"/>
+      <patient>
+        <name use="L">
+          <given>Kenji</given>
+          <family>Nakamura</family>
+        </name>
+        <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1"/>
+        <birthTime value="20190722"/>
+        <raceCode code="2028-9" displayName="Asian" codeSystem="2.16.840.1.113883.6.238" codeSystemName="CDC Race and Ethnicity"/>
+        <ethnicGroupCode code="2186-5" displayName="Not Hispanic or Latino" codeSystem="2.16.840.1.113883.6.238" codeSystemName="CDC Race and Ethnicity"/>
+        <languageCommunication>
+          <languageCode code="eng"/>
+          <preferenceInd value="true"/>
+        </languageCommunication>
+      </patient>
+      <providerOrganization>
+        <id root="2.16.840.1.113883.19.5.9999.101"/>
+        <name>Arroyo Regional Medical Center</name>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <time value="20260112103000"/>
+    <assignedAuthor>
+      <id root="2.16.840.1.113883.4.6" extension="1780536114"/>
+      <assignedPerson>
+        <name><given>Niamh</given><family>Gallagher</family></name>
+      </assignedPerson>
+      <representedOrganization><name>Arroyo Regional Medical Center</name></representedOrganization>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id root="2.16.840.1.113883.19.5.9999.101"/>
+        <name>Arroyo Regional Medical Center</name>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <component>
+    <structuredBody>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.5.1" extension="2015-08-01"/>
+        <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" displayName="Problem list"/>
+        <title>Problems</title>
+        <text>Problems recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="195967001-20260105"/>
+            <code code="195967001" codeSystem="2.16.840.1.113883.6.96" displayName="Asthma"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="CD" code="195967001" codeSystem="2.16.840.1.113883.6.96" displayName="Asthma"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.1.1" extension="2015-08-01"/>
+        <code code="10160-0" codeSystem="2.16.840.1.113883.6.1" displayName="History of medication use"/>
+        <title>Medications</title>
+        <text>Medications recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="745679-20260105"/>
+            <code code="745679" codeSystem="2.16.840.1.113883.6.88" displayName="Albuterol 90 MCG inhaler"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="CD" code="745679" codeSystem="2.16.840.1.113883.6.88" displayName="Albuterol 90 MCG inhaler"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.6.1" extension="2015-08-01"/>
+        <code code="48765-2" codeSystem="2.16.840.1.113883.6.1" displayName="Allergies"/>
+        <title>Allergies</title>
+        <text>Allergies recorded.</text>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.3.1" extension="2015-08-01"/>
+        <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" displayName="Relevant diagnostic tests"/>
+        <title>Results</title>
+        <text>Results recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="19926-5-20260105"/>
+            <code code="19926-5" codeSystem="2.16.840.1.113883.6.1" displayName="FEV1/FVC predicted"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="PQ" value="82" unit="%"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.4.1" extension="2015-08-01"/>
+        <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" displayName="Vital signs"/>
+        <title>Vital Signs</title>
+        <text>Vital Signs recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="8867-4-20260105"/>
+            <code code="8867-4" codeSystem="2.16.840.1.113883.6.1" displayName="Heart rate"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="PQ" value="96" unit="/min"/>
+          </observation>
+        </entry>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="9279-1-20260105"/>
+            <code code="9279-1" codeSystem="2.16.840.1.113883.6.1" displayName="Respiratory rate"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="PQ" value="22" unit="/min"/>
+          </observation>
+        </entry>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="8310-5-20260105"/>
+            <code code="8310-5" codeSystem="2.16.840.1.113883.6.1" displayName="Body temperature"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="PQ" value="37.1" unit="Cel"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.2.1" extension="2015-08-01"/>
+        <code code="11369-6" codeSystem="2.16.840.1.113883.6.1" displayName="History of immunizations"/>
+        <title>Immunizations</title>
+        <text>Immunizations recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="141-20260105"/>
+            <code code="141" codeSystem="2.16.840.1.113883.12.292" displayName="Influenza, seasonal, injectable"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="CD" code="141" codeSystem="2.16.840.1.113883.12.292" displayName="Influenza, seasonal, injectable"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.17" extension="2015-08-01"/>
+        <code code="29762-2" codeSystem="2.16.840.1.113883.6.1" displayName="Social history"/>
+        <title>Social History</title>
+        <text>Social History recorded.</text>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.22.1" extension="2015-08-01"/>
+        <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" displayName="Encounters"/>
+        <title>Encounters</title>
+        <text>Encounters recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="185349003-20260105"/>
+            <code code="185349003" codeSystem="2.16.840.1.113883.6.96" displayName="Outpatient encounter"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="CD" code="185349003" codeSystem="2.16.840.1.113883.6.96" displayName="Outpatient encounter"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.500" extension="2015-08-01"/>
+        <code code="85847-2" codeSystem="2.16.840.1.113883.6.1" displayName="Care team"/>
+        <title>Care Team Members</title>
+        <text>Care Team Members recorded.</text>
+        <entry>
+          <observation classCode="OBS" moodCode="EVN">
+            <id root="2.16.840.1.113883.19.5.99999.2" extension="453231000124104-20260105"/>
+            <code code="453231000124104" codeSystem="2.16.840.1.113883.6.96" displayName="Primary care provider"/>
+            <statusCode code="completed"/>
+            <effectiveTime value="20260105"/>
+            <value xsi:type="CD" code="453231000124104" codeSystem="2.16.840.1.113883.6.96" displayName="Primary care provider"/>
+          </observation>
+        </entry>
+      </section>
+    </component>
+    <component>
+      <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.10" extension="2015-08-01"/>
+        <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" displayName="Plan of treatment"/>
+        <title>Plan of Treatment</title>
+        <text>Plan of Treatment recorded.</text>
+      </section>
+    </component>
+  </structuredBody>
+  </component>
+</ClinicalDocument>

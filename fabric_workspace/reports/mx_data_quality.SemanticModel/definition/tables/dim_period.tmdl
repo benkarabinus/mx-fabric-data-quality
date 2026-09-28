@@ -1,0 +1,55 @@
+/// One row per reporting month. MX reports monthly, so the month is the finest
+/// grain anything in this model is sliced by.
+table dim_period
+	lineageTag: 21bffcbc-114c-43c9-8b5f-888513612b90
+
+	/// yyyymm, e.g. 202601
+	column period_key
+		dataType: int64
+		lineageTag: 32c51e72-43b8-4b5d-92b3-a9357d593c46
+		summarizeBy: none
+		sourceColumn: period_key
+
+	/// First day of the reporting month, for date slicers
+	column period_start
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 5b9e326c-cb6f-4742-a845-30bad3a047c4
+		summarizeBy: none
+		sourceColumn: period_start
+
+	/// Calendar year
+	column year
+		dataType: int64
+		lineageTag: 8d4d0663-578a-4889-97b5-2da21aaea1e9
+		summarizeBy: none
+		sourceColumn: year
+
+	/// Month number, 1 to 12
+	column month
+		dataType: int64
+		lineageTag: 596d32f0-de3d-4ab0-86d1-af34a6a940b7
+		summarizeBy: none
+		sourceColumn: month
+
+	/// Month name, e.g. January
+	column month_name
+		dataType: string
+		lineageTag: 1243701b-d1c2-405b-a804-5d91bdaaff95
+		summarizeBy: none
+		sourceColumn: month_name
+
+	/// e.g. Jan 2026. Sorted by period_key so months order chronologically.
+	column period_label
+		dataType: string
+		lineageTag: 423c9470-409a-41c8-99c0-ed63b896e5c4
+		summarizeBy: none
+		sourceColumn: period_label
+		sortByColumn: period_key
+
+	partition dim_period = entity
+		mode: directLake
+		source
+			entityName: dim_period
+			schemaName: dq
+			expressionSource: DirectLake_mx_gold

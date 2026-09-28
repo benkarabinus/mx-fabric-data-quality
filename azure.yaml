@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: mx-prism-fabric-poc
+metadata:
+  template: mx-prism-fabric-poc@1.0
+
+requiredVersions:
+  azd: ">1.17.1 != 1.23.9"
+
+infra:
+  provider: bicep
+  path: infra
+  parameters:
+    solutionName: ${AZURE_ENV_NAME}
+    location: ${AZURE_LOCATION}
+
+hooks:
+  preprovision:
+    windows:
+      run: |
+        Write-Host ""
+        Write-Host "  ---------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
+        Write-Host "  Note: If deployment fails, see the Troubleshooting section of docs/Deploy.md." -ForegroundColor Yellow
+        Write-Host "  The deployment is safe to re-run once the cause is fixed." -ForegroundColor Cyan
+        Write-Host "  ---------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
+        Write-Host ""
+      shell: pwsh
+      interactive: true
+    posix:
+      run: |
+        printf '\n'
+        printf '\033[33m  ---------------------------------------------------------------------------------------------------\033[0m\n'
+        printf '\033[33m  Note: If deployment fails, see the Troubleshooting section of docs/Deploy.md.\033[0m\n'
+        printf '\033[36m  The deployment is safe to re-run once the cause is fixed.\033[0m\n'
+        printf '\033[33m  ---------------------------------------------------------------------------------------------------\033[0m\n'
+        printf '\n'
+      shell: sh
+      interactive: true
+  postprovision:
+    windows:
+      shell: pwsh
+      run: ./infra/scripts/fabric/Install-MxSolution.ps1
+      interactive: true
+      continueOnError: false
+    posix:
+      shell: pwsh
+      run: ./infra/scripts/fabric/Install-MxSolution.ps1
+      interactive: true
+      continueOnError: false
+  predown:
+    windows:
+      shell: pwsh
+      run: ./infra/scripts/fabric/Remove-MxSolution.ps1 -Force
+      interactive: true
+      continueOnError: false
+    posix:
+      shell: pwsh
+      run: ./infra/scripts/fabric/Remove-MxSolution.ps1 -Force
+      interactive: true
+      continueOnError: false

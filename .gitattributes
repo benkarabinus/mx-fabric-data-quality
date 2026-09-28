@@ -1,0 +1,38 @@
+# Normalize line endings so Fabric item definitions round-trip cleanly between
+# Windows authoring, the REST deployment and the Fabric Git integration,
+# which expect LF.
+
+* text=auto eol=lf
+
+# Fabric workspace item definitions - always LF
+fabric_workspace/** text eol=lf
+*.platform          text eol=lf
+
+# Notebooks and scripts - always LF
+*.ipynb             text eol=lf
+*.py                text eol=lf
+*.sh                text eol=lf
+*.yml               text eol=lf
+*.yaml              text eol=lf
+*.bicep             text eol=lf
+*.json              text eol=lf
+*.md                text eol=lf
+
+# PowerShell is friendlier with CRLF on Windows and tolerates LF elsewhere
+*.ps1               text eol=crlf
+
+# Sample healthcare messages. HL7 v2 uses a carriage return as its segment
+# terminator, so these must never be normalized.
+*.hl7               binary
+*.er7               binary
+
+# Binary assets
+*.png               binary
+*.jpg               binary
+*.jpeg              binary
+*.gif               binary
+*.pdf               binary
+*.xlsx              binary
+*.docx              binary
+*.pbix              binary
+*.pbit              binary

@@ -1,0 +1,16 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["dim_participant", "dim_period", "dim_rule", "fact_rule_result"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dim_participant
+ref table dim_period
+ref table dim_rule
+ref table fact_rule_result

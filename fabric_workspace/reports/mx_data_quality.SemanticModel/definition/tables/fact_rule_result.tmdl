@@ -1,0 +1,179 @@
+/// One row per message per rule. The notebook answers only "did this message
+/// satisfy this rule?" - no rates and no percentages are ever stored. The first
+/// five measures turn those rows into rates and compare them to the threshold,
+/// so a rate is always computed for whatever slice the report is showing. The
+/// remaining measures summarise those results for the report's cards and colours.
+table fact_rule_result
+	lineageTag: d6c200ff-e068-4868-b948-582d00f9af83
+
+	/// Messages that satisfied the rule. The numerator of the compliance rate.
+	measure Numerator = ```
+			CALCULATE(
+			    COUNTROWS(fact_rule_result),
+			    fact_rule_result[is_satisfied] = TRUE
+			)
+			```
+		formatString: #,##0
+		displayFolder: Measures
+		lineageTag: c66e8000-f7a2-4bcd-8e5f-2fd9256216cb
+
+	/// Messages the rule applied to. A CONDITIONAL rule only counts messages whose
+	/// condition field was populated, so this is not simply the message count.
+	measure Denominator = ```
+			CALCULATE(
+			    COUNTROWS(fact_rule_result),
+			    fact_rule_result[is_applicable] = TRUE
+			)
+			```
+		formatString: #,##0
+		displayFolder: Measures
+		lineageTag: 1ab7d0bc-7bf1-498a-aa88-9fa7fb89a4a1
+
+	/// Numerator over denominator. Blank - shown as N/A - when nothing was in scope,
+	/// because reporting 0% for a feed that sent nothing would misrepresent the
+	/// participant. This mirrors MX's IF(denominator=0,"n/a",...).
+	measure 'Compliance %' = ```
+			IF(
+			    [Denominator] = 0,
+			    BLANK(),
+			    DIVIDE([Numerator], [Denominator])
+			)
+			```
+		formatString: 0.0%
+		displayFolder: Measures
+		lineageTag: 17dbfcd0-8c55-43d1-8253-a67aaf80760b
+
+	/// The rate this rule requires, as set in mapping.quality_rule. Blank when more
+	/// than one rule is in context, because thresholds differ per rule.
+	measure 'Rule Threshold' = SELECTEDVALUE(dim_rule[threshold])
+		formatString: 0.0%
+		displayFolder: Measures
+		lineageTag: 73217169-d632-472d-abdd-e1b42b85e148
+
+	/// Pass, Warning, Fail or N/A. Reports Mixed when several rules share the
+	/// context, since there is no single threshold to compare against.
+	measure Status = ```
+			IF(
+			    ISBLANK([Compliance %]),
+			    "N/A",
+			    IF(
+			        ISBLANK([Rule Threshold]),
+			        "Mixed",
+			        IF(
+			            [Compliance %] >= [Rule Threshold],
+			            "Pass",
+			            IF(SELECTEDVALUE(dim_rule[exception_allowed]), "Warning", "Fail")
+			        )
+			    )
+			)
+			```
+		displayFolder: Measures
+		lineageTag: 7a8db59c-89f0-49d8-9639-4ee3ff6d09f3
+
+	/// Rules in context whose Status is Pass. Direct Lake exposes a blank dimension
+	/// member, so blank rule_ids are excluded here and in the three measures below.
+	measure 'Rules Passing' = IF(NOT ISEMPTY(fact_rule_result), COUNTROWS(FILTER(VALUES(dim_rule[rule_id]), NOT ISBLANK(dim_rule[rule_id]) && [Status] = "Pass")) + 0)
+		formatString: #,##0
+		displayFolder: Measures
+		lineageTag: f8ac5067-7f62-446f-bfb4-325c4aabbdda
+
+	/// Rules in context below threshold where the rule allows an exception.
+	measure 'Rules Warning' = IF(NOT ISEMPTY(fact_rule_result), COUNTROWS(FILTER(VALUES(dim_rule[rule_id]), NOT ISBLANK(dim_rule[rule_id]) && [Status] = "Warning")) + 0)
+		formatString: #,##0
+		displayFolder: Measures
+		lineageTag: 9f32abda-44fb-4c4d-aab9-964084925c0f
+
+	/// Rules in context whose Status is Fail.
+	measure 'Rules Failing' = IF(NOT ISEMPTY(fact_rule_result), COUNTROWS(FILTER(VALUES(dim_rule[rule_id]), NOT ISBLANK(dim_rule[rule_id]) && [Status] = "Fail")) + 0)
+		formatString: #,##0
+		displayFolder: Measures
+		lineageTag: 2be98253-5467-45b0-aa25-16984027426d
+
+	/// Rules with nothing in scope for the context. Not scored, never counted as failures.
+	measure 'Rules N/A' = IF(NOT ISEMPTY(fact_rule_result), COUNTROWS(FILTER(VALUES(dim_rule[rule_id]), NOT ISBLANK(dim_rule[rule_id]) && [Status] = "N/A")) + 0)
+		formatString: #,##0
+		displayFolder: Measures
+		lineageTag: 0536324b-54b4-4741-8f53-bc8133a79d96
+
+	/// Rules that had something in scope: Passing + Warning + Failing.
+	measure 'Rules Scored' = [Rules Passing] + [Rules Warning] + [Rules Failing]
+		formatString: #,##0
+		displayFolder: Measures
+		lineageTag: 87c7ead4-f5f4-41de-8347-f2da26c8b75a
+
+	/// Share of scored rules that pass. Blank when no rule was scored.
+	measure 'Pass Rate' = DIVIDE([Rules Passing], [Rules Scored])
+		formatString: 0.0%
+		displayFolder: Measures
+		lineageTag: 4b6ec096-2d46-49dd-bd84-a26f804e95e7
+
+	/// Messages a rule applied to but that did not satisfy it: Denominator minus Numerator.
+	measure 'Failed Messages' = CALCULATE(COUNTROWS(fact_rule_result), fact_rule_result[is_applicable] = TRUE(), fact_rule_result[is_satisfied] = FALSE())
+		formatString: #,##0
+		displayFolder: Measures
+		lineageTag: efd4a40f-fa2b-43ec-9844-6bef2dda6073
+
+	/// Rules defined in mapping.quality_rule for the context, regardless of results.
+	measure 'Rule Count' = COUNTROWS(dim_rule)
+		formatString: #,##0
+		displayFolder: Measures
+		lineageTag: aede088e-09e8-480b-9016-80326ac9b5db
+
+	/// Hex color for Status, used by conditional formatting. Always paired with the Status text.
+	measure 'Status Color' = SWITCH([Status], "Pass", "#0D9488", "Warning", "#B45309", "Fail", "#B91C1C", "#64748B")
+		displayFolder: Measures
+		lineageTag: d2fb7aad-ec1b-4d15-83ab-3e03a885c07f
+
+	/// The message scored - drill through to silver for the raw text
+	column message_uid
+		dataType: string
+		lineageTag: 8f7d26f4-e45c-46be-80b0-2d3bacc290b9
+		summarizeBy: none
+		sourceColumn: message_uid
+
+	/// Joins to dq.dim_participant
+	column participant_id
+		dataType: string
+		isHidden
+		lineageTag: 972731ca-cc91-4d52-be8b-c35570df5d0d
+		summarizeBy: none
+		sourceColumn: participant_id
+
+	/// Joins to dq.dim_period
+	column period_key
+		dataType: int64
+		isHidden
+		lineageTag: 3a13db73-9a51-4607-a774-d6015f600b20
+		summarizeBy: none
+		sourceColumn: period_key
+
+	/// Joins to dq.dim_rule
+	column rule_id
+		dataType: string
+		isHidden
+		lineageTag: 12e14e4e-a8cf-42a7-a43b-2ab475d7e916
+		summarizeBy: none
+		sourceColumn: rule_id
+
+	/// In the denominator. FALSE when a CONDITIONAL rule did not trigger.
+	column is_applicable
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fc2f3b2d-8abe-4654-8bcb-138113812a12
+		summarizeBy: none
+		sourceColumn: is_applicable
+
+	/// In the numerator.
+	column is_satisfied
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b895367e-09d3-4dfe-ab74-9978784cdc8e
+		summarizeBy: none
+		sourceColumn: is_satisfied
+
+	partition fact_rule_result = entity
+		mode: directLake
+		source
+			entityName: fact_rule_result
+			schemaName: dq
+			expressionSource: DirectLake_mx_gold

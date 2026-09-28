@@ -1,0 +1,9 @@
+/// OneLake connection to the mx_gold lakehouse. Direct Lake reads the Delta files
+/// directly, so the model never goes through the SQL analytics endpoint. The two
+/// GUIDs in the URL are placeholders - Deploy-MxContent.ps1 substitutes the real
+/// workspace and lakehouse IDs at publish time.
+expression DirectLake_mx_gold =
+	let
+		Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/1a2b3c4d-0000-4000-8000-000000000000/1a2b3c4d-0003-4000-8000-000000000003", [HierarchicalNavigation=true])
+	in
+		Source

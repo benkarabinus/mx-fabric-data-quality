@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "mx_dq_pipeline",
+    "description": "Routine snapshot processing: ingest raw files, parse HL7 and CCDA, then score rules using existing mappings. Run mx_setup_pipeline first in a new workspace. Does not create schemas or reseed mappings. Do not run concurrently with setup."
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0f4c7b21-8a36-4d5e-9b27-6e1a3c0d7f45"
+  }
+}
